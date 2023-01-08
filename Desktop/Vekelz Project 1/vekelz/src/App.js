@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import Application from "./components/app";
+import Application2 from "./components/page2";
+import SideMenu from "./components/sideMenu";
+import NavBar from "./components/navBar";
+import { useState } from "react";
 
 function App() {
+  const [page, setPage] = useState();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ width: "100%", display: "flex", flexDirection: "row" }}>
+      <div>
+        <SideMenu />
+      </div>
+      <div style={{ width: "100%" }}>
+        <NavBar></NavBar>
+        <Routes>
+          <Route path="/" element={<Application2 />} />
+          <Route path="/booking" element={<Application />} />
+        </Routes>
+      </div>
     </div>
   );
 }
